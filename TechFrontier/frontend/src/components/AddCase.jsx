@@ -249,7 +249,32 @@ function AddCase() {
           </form>
         </div>
       </div>
+      
+    {/* Result Modal */}
+      {showResult && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50"
+        >
+          <div className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-xl text-center">
+            <h2 className="text-xl font-semibold text-blue-700 mb-2">Prediction Complete</h2>
+            <p className="text-gray-800 mb-4">Result: <strong>{resultText}</strong></p>
+            <button
+              onClick={() => {
+                setShowResult(false)
+                navigate('/prediction/cases/view')
+              }}
+              className="bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition"
+            >
+              OK
+            </button>
+          </div>
+        </motion.div>
+      )}
     </div>
+
+    
   )
 }
 
